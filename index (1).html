@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belajarin — Media Pembelajaran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5fb;--sf:#fff;--tx:#14162b;--mu:#6b6f8a;--bd:#e5e7f2;--pr:#5b4bff;--pr2:#a24dff;--ok:#12a36a;--er:#e5484d;--tg:#eeeaff;--sh:0 10px 30px rgba(40,40,110,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1020;--sf:#171a30;--tx:#eef0ff;--mu:#9a9fc4;--bd:#292d4d;--tg:#26225a;--sh:0 10px 30px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0e1020;--sf:#171a30;--tx:#eef0ff;--mu:#9a9fc4;--bd:#292d4d;--tg:#26225a;--sh:0 10px 30px rgba(0,0,0,.4)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.02em}h2{font-size:18px;margin:0 0 10px}h3{font-size:16px;margin:8px 0 4px}
+.mu{color:var(--mu);margin:0}.wrap{max-width:1080px;margin:0 auto;padding:16px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--sf) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px}
+.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--pr),var(--pr2));display:grid;place-items:center;color:#fff;font-size:18px}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:220px}
+nav button{border:0;background:none;color:var(--mu);font:inherit;font-weight:700;padding:8px 14px;border-radius:10px;cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--tg);color:var(--pr)}
+.me{display:flex;align-items:center;gap:8px}
+.pill,.tag{display:inline-block;background:var(--tg);color:var(--pr);font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}
+.btn{border:0;background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;font:inherit;font-weight:700;padding:10px 18px;border-radius:12px;cursor:pointer;box-shadow:0 6px 16px rgba(91,75,255,.28);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn.sm{padding:6px 13px;font-size:13px}.btn.ghost{background:var(--sf);color:var(--tx);border:1px solid var(--bd);box-shadow:none}.btn.danger{color:var(--er)}
+.inp{width:100%;font:inherit;color:var(--tx);background:var(--sf);border:1.5px solid var(--bd);border-radius:12px;padding:11px 13px;margin:4px 0 12px}
+.inp:focus{outline:2px solid var(--pr);border-color:transparent}textarea.inp{min-height:110px;resize:vertical}
+label{font-size:13px;font-weight:700;color:var(--mu)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:8px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:18px;box-shadow:var(--sh)}
+.stat b{display:block;font-size:30px;letter-spacing:-.02em}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.hero{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;border-radius:22px;padding:26px;margin-bottom:16px}.hero p{opacity:.9;margin:4px 0 0}
+.empty{text-align:center;color:var(--mu);padding:40px 16px;border:2px dashed var(--bd);border-radius:18px;margin-top:14px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd);white-space:nowrap}th{color:var(--mu);font-size:13px}
+.login{min-height:80vh;display:grid;place-items:center}.lbox{width:100%;max-width:440px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.role{border:2px solid var(--bd);background:var(--sf);color:var(--tx);border-radius:16px;padding:16px 8px;font:inherit;font-weight:700;cursor:pointer}
+.role span{display:block;font-size:28px}.role.on{border-color:var(--pr);background:var(--tg)}
+#modal{position:fixed;inset:0;background:rgba(10,10,30,.55);z-index:20;display:grid;place-items:center;padding:16px}#modal[hidden]{display:none}
+.sheet{background:var(--sf);color:var(--tx);border-radius:22px;width:100%;max-width:640px;max-height:92vh;overflow:auto;padding:22px}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:var(--tx);background:var(--sf);border:2px solid var(--bd);border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer}
+.opt.sel{border-color:var(--pr);background:var(--tg)}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}.opt.bad{border-color:var(--er);background:color-mix(in srgb,var(--er) 14%,transparent)}
+.bar2{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin:10px 0 16px}.bar2 i{display:block;height:100%;background:linear-gradient(90deg,var(--pr),var(--pr2))}
+.qb{border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}.qb .rr{display:flex;gap:8px;align-items:center}.qb .rr .inp{margin:3px 0}
+.read{white-space:pre-wrap;word-break:break-word}.big{font-size:54px;font-weight:800;text-align:center;margin:6px 0}
+.ban{background:#fff4d6;color:#6b4a00;border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#14162b;color:#fff;padding:11px 18px;border-radius:12px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw}
+#toast.on{opacity:1}#toast.err{background:var(--er)}
+@media(max-width:560px){h1{font-size:22px}.me b{display:none}}
+</style>
+</head>
+<body>
+<div id="app"></div><div id="modal" hidden></div><div id="toast" role="status"></div>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const hash=s=>{let a=0xdeadbeef,b=0x41c6ce57;for(let i=0,c;i<s.length;i++){c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return String(4294967296*(2097151&b)+(a>>>0))};
+const fmt=t=>t?new Date(t).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}):'-';
+const byNew=l=>l.slice().sort((a,b)=>(b.createdAt||b.at||0)-(a.createdAt||a.at||0));
+const S={role:null,name:'',pid:'',view:'home',pick:'siswa',db:null,local:false,run:null,rq:'',unsubs:[],data:{materials:[],quizzes:[],results:[]}};
+const KEY='belajarin_profile';
+const loadProf=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}};
+const saveProf=p=>{try{localStorage.setItem(KEY,JSON.stringify(p))}catch(e){}};
+let tt;function toast(m,err){const t=$('#toast');t.textContent=m;t.className='on'+(err?' err':'');clearTimeout(tt);tt=setTimeout(()=>t.className='',3200)}
+
+/* ===== Data layer (db bersama, atau memori lokal jika db tidak tersedia) ===== */
+const mem={materials:{},quizzes:{},results:{},config:{}},subs={};
+const emit=c=>(subs[c]||[]).forEach(f=>f());
+function watch(col,cb){
+  if(S.db)return S.db.collection(col).onSnapshot(s=>cb(s.docs.map(d=>Object.assign({id:d.id},d.data()))),e=>{console.error(e);toast('Gagal memuat data ('+((e&&e.code)||'error')+')',1)});
+  const f=()=>cb(Object.keys(mem[col]).map(id=>Object.assign({id},mem[col][id])));
+  (subs[col]=subs[col]||[]).push(f);f();
+  return()=>{subs[col]=subs[col].filter(x=>x!==f)};
+}
+async function put(col,id,data){try{if(S.db)await S.db.doc(col+'/'+id).set(data);else{mem[col][id]=data;emit(col)}return true}catch(e){console.error(e);toast('Gagal menyimpan. Akun Anda perlu akses Kontributor pada halaman ini.',1);return false}}
+async function rm(col,id){try{if(S.db)await S.db.doc(col+'/'+id).delete();else{delete mem[col][id];emit(col)}return true}catch(e){console.error(e);toast('Gagal menghapus.',1);return false}}
+async function getDoc(col,id){if(S.db){const s=await S.db.doc(col+'/'+id).get();return s.exists?s.data():null}return mem[col][id]||null}
+
+/* ===== Modal ===== */
+function openModal(h){const m=$('#modal');m.innerHTML='<div class="sheet" role="dialog" aria-modal="true">'+h+'</div>';m.hidden=false;document.body.style.overflow='hidden'}
+function closeModal(){const m=$('#modal');m.hidden=true;m.innerHTML='';document.body.style.overflow='';S.run=null}
+let cbk=null;
+function ask(msg,fn){cbk=fn;openModal('<h2>Konfirmasi</h2><p>'+esc(msg)+'</p><div class="row"><button class="btn danger" data-act="yes">Ya, lanjutkan</button><button class="btn ghost" data-act="close">Batal</button></div>')}
+
+/* ===== Login ===== */
+function drawLogin(){
+  const p=loadProf();if(p&&p.role)S.pick=p.role;
+  $('#app').innerHTML='<div class="wrap login"><div class="lbox card"><div class="brand"><div class="logo">🎓</div>Belajarin</div><h1 style="margin-top:16px">Selamat datang</h1><p class="mu">Platform media pembelajaran untuk guru dan siswa.</p>'+
+  (S.local?'<div class="ban" style="margin-top:12px">Mode lokal: data hanya tersimpan sementara di perangkat ini.</div>':'')+
+  '<div class="roles"><button class="role'+(S.pick==='siswa'?' on':'')+'" data-act="role" data-id="siswa"><span>🧑‍🎓</span>Siswa</button><button class="role'+(S.pick==='guru'?' on':'')+'" data-act="role" data-id="guru"><span>👩‍🏫</span>Guru</button></div>'+
+  '<label for="nm">Nama lengkap</label><input class="inp" id="nm" maxlength="60" autocomplete="name" value="'+esc(p&&p.name||'')+'">'+
+  (S.pick==='guru'?'<label for="pin">PIN guru</label><input class="inp" id="pin" type="password" maxlength="30" autocomplete="off"><p class="mu" style="font-size:12px;margin:-6px 0 12px">Guru pertama yang masuk membuat PIN. Pengguna berikutnya memakai PIN yang sama.</p>':'')+
+  '<button class="btn" style="width:100%" id="go" data-act="login">Masuk</button></div></div>';
+}
+async function doLogin(){
+  const name=($('#nm').value||'').trim();
+  if(name.length<2)return toast('Masukkan nama minimal 2 karakter',1);
+  const b=$('#go');b.disabled=true;
+  try{
+    if(S.pick==='guru'){
+      const pin=($('#pin').value||'');
+      const cfg=await getDoc('config','app');
+      if(!cfg||!cfg.pin){
+        if(pin.length<4){b.disabled=false;return toast('Buat PIN guru minimal 4 karakter',1)}
+        if(!await put('config','app',{pin:hash(pin),by:name,at:Date.now()})){b.disabled=false;return}
+        toast('PIN guru berhasil dibuat');
+      }else if(cfg.pin!==hash(pin)){b.disabled=false;return toast('PIN guru salah',1)}
+    }
+  }catch(e){console.error(e);b.disabled=false;return toast('Tidak dapat memverifikasi. Coba lagi.',1)}
+  const p=loadProf();
+  S.role=S.pick;S.name=name;S.pid=(p&&p.pid)||uid();S.view='home';
+  saveProf({role:S.role,name,pid:S.pid});
+  ['materials','quizzes','results'].forEach(c=>S.unsubs.push(watch(c,l=>{S.data[c]=l;render()})));
+  shell();render();
+}
+function logout(){S.unsubs.forEach(u=>{try{u()}catch(e){}});S.unsubs=[];S.role=null;S.data={materials:[],quizzes:[],results:[]};closeModal();drawLogin()}
+
+/* ===== Shell & render ===== */
+const NAV={guru:[['home','Beranda'],['materi','Materi'],['kuis','Kuis'],['hasil','Hasil Siswa']],siswa:[['home','Beranda'],['materi','Materi'],['kuis','Kuis'],['nilai','Nilai Saya']]};
+function shell(){
+  $('#app').innerHTML='<header class="top"><div class="wrap bar"><div class="brand"><div class="logo">🎓</div>Belajarin</div><nav id="nav"></nav><div class="me"><span class="pill">'+(S.role==='guru'?'Guru':'Siswa')+'</span><b>'+esc(S.name)+'</b><button class="btn ghost sm" data-act="logout">Keluar</button></div></div></header><main class="wrap" id="view"></main>';
+}
+function render(){
+  if(!S.role||!$('#view'))return;
+  $('#nav').innerHTML=NAV[S.role].map(n=>'<button class="'+(S.view===n[0]?'on':'')+'" data-act="go" data-id="'+n[0]+'">'+n[1]+'</button>').join('');
+  const v={home:homeV,materi:materiV,kuis:kuisV,hasil:hasilV,nilai:nilaiV}[S.view]||homeV;
+  $('#view').innerHTML=(S.local?'<div class="ban">Mode lokal: data tidak dibagikan antar pengguna.</div>':'')+v();
+}
+const empty=t=>'<div class="empty">'+esc(t)+'</div>';
+const liveResults=()=>{const ids=new Set(S.data.quizzes.map(q=>q.id));return S.data.results.filter(r=>ids.has(r.quizId))};
+const avg=l=>l.length?Math.round(l.reduce((a,r)=>a+r.score,0)/l.length):0;
+const stat=(n,l,i)=>'<div class="card stat"><span>'+i+'</span><b>'+n+'</b><span class="mu">'+l+'</span></div>';
+
+function homeV(){
+  const M=S.data.materials,Q=S.data.quizzes,R=liveResults();
+  if(S.role==='guru'){
+    const stu=new Set(R.map(r=>r.pid)).size;
+    return '<div class="hero"><h1>Halo, '+esc(S.name)+'!</h1><p>Kelola materi dan kuis, lalu pantau hasil belajar siswa Anda.</p></div><div class="grid">'+stat(M.length,'Materi','📚')+stat(Q.length,'Kuis','📝')+stat(stu,'Siswa mengerjakan','🧑‍🎓')+stat(R.length?avg(R):'-','Rata-rata nilai','⭐')+'</div><div class="row" style="margin-top:18px"><button class="btn" data-act="addm">+ Tambah Materi</button><button class="btn ghost" data-act="addq">+ Buat Kuis</button></div>';
+  }
+  const mine=R.filter(r=>r.pid===S.pid),done=new Set(mine.map(r=>r.quizId)),todo=Q.filter(q=>!done.has(q.id));
+  return '<div class="hero"><h1>Halo, '+esc(S.name)+'! 👋</h1><p>Ayo lanjutkan belajarmu hari ini.</p></div><div class="grid">'+stat(done.size+'/'+Q.length,'Kuis selesai','✅')+stat(mine.length?avg(mine):'-','Rata-rata nilaimu','⭐')+stat(M.length,'Materi tersedia','📚')+'</div>'+
+  '<h2 style="margin-top:22px">Kuis menunggumu</h2>'+(todo.length?'<div class="grid">'+byNew(todo).slice(0,4).map(quizCard).join('')+'</div>':empty(Q.length?'Hebat! Semua kuis sudah kamu kerjakan.':'Belum ada kuis dari guru.'))+
+  '<h2 style="margin-top:22px">Materi terbaru</h2>'+(M.length?'<div class="grid">'+byNew(M).slice(0,3).map(matCard).join('')+'</div>':empty('Belum ada materi dari guru.'));
+}
+function matCard(m){const g=S.role==='guru';
+  return '<article class="card item" data-t="'+esc((m.title+' '+(m.category||'')+' '+(m.desc||'')).toLowerCase())+'"><span class="tag">'+esc(m.category||'Umum')+'</span><h3>'+esc(m.title)+'</h3><p class="mu">'+esc(m.desc||'')+'</p><div class="row"><button class="btn sm" data-act="readm" data-id="'+esc(m.id)+'">Buka</button>'+(g?'<button class="btn ghost sm danger" data-act="delm" data-id="'+esc(m.id)+'">Hapus</button>':'')+'</div></article>';}
+function materiV(){const g=S.role==='guru',L=byNew(S.data.materials);
+  return '<div class="head"><div><h1>Materi Pembelajaran</h1><p class="mu">'+(g?'Kelola materi yang dibaca siswa.':'Pelajari materi dari gurumu.')+'</p></div>'+(g?'<button class="btn" data-act="addm">+ Tambah Materi</button>':'')+'</div>'+
+  (L.length?'<input class="inp" id="srch" placeholder="Cari materi…" aria-label="Cari materi"><div class="grid" id="mgrid">'+L.map(matCard).join('')+'</div><div class="empty" id="nores" hidden>Tidak ada materi yang cocok.</div>':empty(g?'Belum ada materi. Tambahkan materi pertama Anda.':'Belum ada materi dari guru.'));}
+function quizCard(q){const g=S.role==='guru',n=(q.questions||[]).length,mine=S.data.results.find(r=>r.quizId===q.id&&r.pid===S.pid);
+  return '<article class="card"><span class="tag">'+n+' soal</span><h3>'+esc(q.title)+'</h3><p class="mu">'+esc(q.desc||'')+'</p>'+(!g&&mine?'<p style="margin:8px 0 0"><b>Nilai terakhir: '+mine.score+'</b></p>':'')+'<div class="row">'+(g?'<button class="btn ghost sm danger" data-act="delq" data-id="'+esc(q.id)+'">Hapus</button>':'<button class="btn sm" data-act="startq" data-id="'+esc(q.id)+'">'+(mine?'Ulangi kuis':'Mulai kuis')+'</button>')+'</div></article>';}
+function kuisV(){const g=S.role==='guru',L=byNew(S.data.quizzes);
+  return '<div class="head"><div><h1>Kuis</h1><p class="mu">'+(g?'Buat kuis pilihan ganda dengan koreksi otomatis.':'Uji pemahamanmu, nilai langsung keluar.')+'</p></div>'+(g?'<button class="btn" data-act="addq">+ Buat Kuis</button>':'')+'</div>'+
+  (L.length?'<div class="grid">'+L.map(quizCard).join('')+'</div>':empty(g?'Belum ada kuis. Buat kuis pertama Anda.':'Belum ada kuis dari guru.'));}
+function hasilV(){
+  const Q=byNew(S.data.quizzes);
+  if(!Q.length)return '<div class="head"><div><h1>Hasil Siswa</h1></div></div>'+empty('Belum ada kuis, jadi belum ada hasil.');
+  if(!Q.find(q=>q.id===S.rq))S.rq=Q[0].id;
+  const R=byNew(S.data.results.filter(r=>r.quizId===S.rq));
+  return '<div class="head"><div><h1>Hasil Siswa</h1><p class="mu">Nilai dikoreksi otomatis saat siswa menyelesaikan kuis.</p></div></div><label for="rq">Pilih kuis</label><select class="inp" id="rq">'+Q.map(q=>'<option value="'+esc(q.id)+'"'+(q.id===S.rq?' selected':'')+'>'+esc(q.title)+'</option>').join('')+'</select>'+
+  (R.length?'<div class="grid" style="margin:0 0 14px">'+stat(R.length,'Siswa mengerjakan','🧑‍🎓')+stat(avg(R),'Rata-rata','📊')+stat(Math.max.apply(null,R.map(r=>r.score)),'Tertinggi','🏆')+'</div><div class="card tw"><table><thead><tr><th>Nama</th><th>Benar</th><th>Nilai</th><th>Waktu</th></tr></thead><tbody>'+R.map(r=>'<tr><td>'+esc(r.name)+'</td><td>'+r.correct+'/'+r.total+'</td><td><b>'+r.score+'</b></td><td>'+fmt(r.at)+'</td></tr>').join('')+'</tbody></table></div>':empty('Belum ada siswa yang mengerjakan kuis ini.'));
+}
+function nilaiV(){
+  const R=byNew(liveResults().filter(r=>r.pid===S.pid));
+  return '<div class="head"><div><h1>Nilai Saya</h1><p class="mu">Riwayat hasil kuis yang sudah kamu kerjakan.</p></div></div>'+(R.length?'<div class="card tw"><table><thead><tr><th>Kuis</th><th>Benar</th><th>Nilai</th><th>Waktu</th></tr></thead><tbody>'+R.map(r=>'<tr><td>'+esc(r.quizTitle)+'</td><td>'+r.correct+'/'+r.total+'</td><td><b>'+r.score+'</b></td><td>'+fmt(r.at)+'</td></tr>').join('')+'</tbody></table></div>':empty('Kamu belum mengerjakan kuis apa pun.'));
+}
+
+/* ===== Forms (guru) ===== */
+function matForm(){openModal('<h2>Tambah Materi</h2><label for="mt">Judul materi</label><input class="inp" id="mt" maxlength="120"><label for="mc">Kategori / mata pelajaran</label><input class="inp" id="mc" maxlength="40" placeholder="Contoh: Matematika"><label for="md">Deskripsi singkat</label><input class="inp" id="md" maxlength="160"><label for="mb">Isi materi</label><textarea class="inp" id="mb" maxlength="20000"></textarea><label for="ml">Tautan tambahan (opsional)</label><input class="inp" id="ml" placeholder="https://…"><div class="row"><button class="btn" data-act="savem">Simpan</button><button class="btn ghost" data-act="close">Batal</button></div>')}
+async function saveM(){
+  const title=$('#mt').value.trim(),body=$('#mb').value.trim(),link=$('#ml').value.trim();
+  if(!title)return toast('Judul materi wajib diisi',1);
+  if(!body&&!link)return toast('Isi materi atau tautan wajib diisi',1);
+  if(link&&!/^https?:\/\//i.test(link))return toast('Tautan harus diawali http:// atau https://',1);
+  if(await put('materials',uid(),{title,category:$('#mc').value.trim()||'Umum',desc:$('#md').value.trim(),content:body,link,by:S.name,createdAt:Date.now()})){closeModal();toast('Materi disimpan')}
+}
+let qn=0;
+function qBlock(){const n=++qn;return '<div class="qb"><div class="rr"><b class="qno"></b><button class="btn ghost sm danger" style="margin-left:auto" data-act="delqb">Hapus soal</button></div><input class="inp qt" placeholder="Tulis pertanyaan" maxlength="300">'+[0,1,2,3].map(j=>'<div class="rr"><input type="radio" name="c'+n+'" value="'+j+'"'+(j===0?' checked':'')+' aria-label="Jawaban benar '+'ABCD'[j]+'"><input class="inp qo" placeholder="Pilihan '+'ABCD'[j]+(j<2?'':' (opsional)')+'" maxlength="160"></div>').join('')+'<p class="mu" style="font-size:12px">Pilih bulatan di sebelah jawaban yang benar.</p></div>'}
+function numberQ(){document.querySelectorAll('#qlist .qb').forEach((b,i)=>{b.querySelector('.qno').textContent='Soal '+(i+1)})}
+function quizForm(){openModal('<h2>Buat Kuis</h2><label for="qtt">Judul kuis</label><input class="inp" id="qtt" maxlength="120"><label for="qdd">Deskripsi (opsional)</label><input class="inp" id="qdd" maxlength="160"><div id="qlist">'+qBlock()+'</div><div class="row"><button class="btn ghost" data-act="addqb">+ Tambah soal</button></div><div class="row" style="margin-top:16px"><button class="btn" data-act="saveq">Simpan kuis</button><button class="btn ghost" data-act="close">Batal</button></div>');numberQ()}
+async function saveQ(){
+  const title=$('#qtt').value.trim();if(!title)return toast('Judul kuis wajib diisi',1);
+  const qs=[];let bad='';
+  document.querySelectorAll('#qlist .qb').forEach((b,i)=>{
+    const text=b.querySelector('.qt').value.trim(),opts=[];let ans=-1;
+    b.querySelectorAll('.qo').forEach((o,j)=>{const v=o.value.trim();if(v){opts.push(v);const r=b.querySelectorAll('input[type=radio]')[j];if(r&&r.checked)ans=opts.length-1}});
+    if(!text)bad=bad||'Soal '+(i+1)+': pertanyaan belum diisi';
+    else if(opts.length<2)bad=bad||'Soal '+(i+1)+': minimal 2 pilihan';
+    else if(ans<0)bad=bad||'Soal '+(i+1)+': jawaban benar harus berisi teks';
+    qs.push({q:text,options:opts,answer:ans});
+  });
+  if(bad)return toast(bad,1);
+  if(await put('quizzes',uid(),{title,desc:$('#qdd').value.trim(),questions:qs,by:S.name,createdAt:Date.now()})){closeModal();toast('Kuis disimpan')}
+}
+
+/* ===== Mengerjakan kuis (siswa) ===== */
+function drawRun(){
+  const r=S.run,q=r.q.questions[r.i],n=r.q.questions.length,last=r.i===n-1,a=r.ans[r.i];
+  openModal('<span class="tag">Soal '+(r.i+1)+' dari '+n+'</span><div class="bar2"><i style="width:'+Math.round((r.i/n)*100)+'%"></i></div><h2>'+esc(q.q)+'</h2>'+q.options.map((o,j)=>'<button class="opt'+(a===j?' sel':'')+'" data-act="pick" data-id="'+j+'">'+'ABCD'[j]+'. '+esc(o)+'</button>').join('')+'<div class="row" style="margin-top:14px"><button class="btn" data-act="'+(last?'finish':'next')+'"'+(a==null?' disabled':'')+'>'+(last?'Selesai':'Berikutnya')+'</button><button class="btn ghost" data-act="close">Keluar</button></div>');
+}
+async function finish(){
+  const r=S.run,qs=r.q.questions;let c=0;qs.forEach((q,i)=>{if(r.ans[i]===q.answer)c++});
+  const score=Math.round(c/qs.length*100);
+  const ok=await put('results',r.q.id+'x'+S.pid,{quizId:r.q.id,quizTitle:r.q.title,pid:S.pid,name:S.name,score,correct:c,total:qs.length,answers:r.ans,at:Date.now()});
+  const rev=qs.map((q,i)=>'<div style="margin-top:14px"><b>'+(i+1)+'. '+esc(q.q)+'</b>'+q.options.map((o,j)=>'<div class="opt '+(j===q.answer?'ok':(j===r.ans[i]?'bad':''))+'" style="cursor:default;margin:5px 0">'+'ABCD'[j]+'. '+esc(o)+(j===q.answer?' ✓':'')+'</div>').join('')+'</div>').join('');
+  openModal('<div class="big" style="color:'+(score>=70?'var(--ok)':'var(--pr)')+'">'+score+'</div><p class="mu" style="text-align:center">'+c+' dari '+qs.length+' soal benar'+(ok?'':' · nilai gagal tersimpan')+'</p><h2 style="margin-top:18px">Pembahasan</h2>'+rev+'<div class="row" style="margin-top:16px"><button class="btn" data-act="close">Tutup</button></div>');
+  S.run=null;
+}
+
+/* ===== Event handling ===== */
+const H={
+  role(id){S.pick=id==='guru'?'guru':'siswa';const nm=$('#nm')?$('#nm').value:'';drawLogin();if(nm)$('#nm').value=nm},
+  login:doLogin,logout,close:closeModal,yes(){const f=cbk;cbk=null;closeModal();if(f)f()},
+  go(id){S.view=id;render();window.scrollTo(0,0)},
+  addm:matForm,savem:saveM,addq:quizForm,saveq:saveQ,
+  addqb(){$('#qlist').insertAdjacentHTML('beforeend',qBlock());numberQ()},
+  delqb(id,t){const l=document.querySelectorAll('#qlist .qb');if(l.length<2)return toast('Minimal satu soal',1);t.closest('.qb').remove();numberQ()},
+  readm(id){const m=S.data.materials.find(x=>x.id===id);if(!m)return;
+    openModal('<span class="tag">'+esc(m.category||'Umum')+'</span><h2 style="margin-top:8px">'+esc(m.title)+'</h2><p class="mu" style="margin-bottom:12px">Oleh '+esc(m.by||'Guru')+' · '+fmt(m.createdAt)+'</p>'+(m.content?'<div class="read">'+esc(m.content)+'</div>':'')+(m.link&&/^https?:\/\//i.test(m.link)?'<p><a href="'+esc(m.link)+'" target="_blank" rel="noopener noreferrer">🔗 Buka tautan materi</a></p>':'')+'<div class="row" style="margin-top:16px"><button class="btn" data-act="close">Tutup</button></div>')},
+  delm(id){ask('Hapus materi ini? Tindakan tidak dapat dibatalkan.',async()=>{if(await rm('materials',id))toast('Materi dihapus')})},
+  delq(id){ask('Hapus kuis ini beserta hasilnya?',async()=>{const rs=S.data.results.filter(r=>r.quizId===id);if(await rm('quizzes',id)){for(const r of rs)await rm('results',r.id);toast('Kuis dihapus')}})},
+  startq(id){const q=S.data.quizzes.find(x=>x.id===id);if(!q||!(q.questions||[]).length)return toast('Kuis belum memiliki soal',1);S.run={q,i:0,ans:[]};drawRun()},
+  pick(id){S.run.ans[S.run.i]=Number(id);drawRun()},
+  next(){S.run.i++;drawRun()},finish
+};
+document.addEventListener('click',e=>{
+  if(e.target.id==='modal'&&S.run==null){closeModal();return}
+  const t=e.target.closest('[data-act]');if(!t)return;
+  const f=H[t.dataset.act];if(f)f(t.dataset.id,t,e);
+});
+document.addEventListener('input',e=>{
+  if(e.target.id!=='srch')return;
+  const v=e.target.value.trim().toLowerCase();let n=0;
+  document.querySelectorAll('#mgrid .item').forEach(c=>{const ok=!v||c.dataset.t.includes(v);c.hidden=!ok;if(ok)n++});
+  const nr=$('#nores');if(nr)nr.hidden=n>0;
+});
+document.addEventListener('change',e=>{if(e.target.id==='rq'){S.rq=e.target.value;render()}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nm'||e.key==='Enter'&&e.target.id==='pin'){const g=$('#go');if(g)g.click()}});
+
+/* ===== Start ===== */
+(async function(){
+  $('#app').innerHTML='<div class="wrap login"><p class="mu">Memuat…</p></div>';
+  try{if(window.claude&&claude.use){const db=await claude.use('db');if(db)S.db=db}}catch(e){console.error(e)}
+  S.local=!S.db;drawLogin();
+})();
+</script>
+</body>
+</html>
